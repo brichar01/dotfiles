@@ -1,0 +1,36 @@
+* {
+  background: transparent;
+}
+
+#idle_inhibitor,
+#mpris,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery {
+  background: #3b4252;  
+  opacity: 0.9;
+  padding-left: 8px;
+  padding-right: 16px;
+  color: #8cafd2;
+  border-radius: 4px;
+}
+
+#workspaces,
+#clock {
+  background: #3b4252;  
+  color: #8cafd2;
+  opacity: 0.9;
+  border-radius: 4px;
+  padding: 0px 8px 0px 8px;
+}
+
+#workspaces button {
+  color: #8cafd2;
+}
+
+#workspaces button.active {
+    color: #e5e9f0;
+}
