@@ -1,8 +1,8 @@
 * {
-    bg0:    #212121EE;
-    bg1:    #2A2A2A;
-    bg2:    #3D3D3D80;
-    bg3:    #2e3440F2;
+    bg0:    #19233080;
+    bg1:    #131a24;
+    bg2:    #212E3F80;
+    bg3:    #39506d80;
     fg0:    #E6E6E6;
     fg1:    #FFFFFF;
     fg2:    #969696;
@@ -20,9 +20,11 @@ window {
     location:       north;
     y-offset:       calc(50% - 250px);
     width:          640;
-    border-radius:  8px;
+    border-radius:  4px;
+    border:         2px;
 
     background-color:   @bg0;
+    border-color:       @fg0;
 }
 
 mainbox {
