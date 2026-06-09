@@ -17,7 +17,8 @@
   padding-left: 8px;
   padding-right: 16px;
   color: #8cafd2;
-  border-radius: 2px;
+  border-radius: 4px;
+  box-shadow: inset 2px -3px #262e38; 
 }
 
 /* middle and left icons */
