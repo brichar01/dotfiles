@@ -21,6 +21,10 @@
   box-shadow: inset 2px -3px #262e38; 
 }
 
+#battery {
+  margin-right: 3px;
+}
+
 /* middle and left icons */
 #workspaces,
 #clock {
@@ -29,6 +33,9 @@
   opacity: 0.9;
   border-radius: 4px;
   padding: 0px 8px 0px 8px;
+  margin-left: 3px;
+  border-radius: 4px;
+  box-shadow: inset 2px -3px #262e38; 
 }
 
 #workspaces button {

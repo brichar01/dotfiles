@@ -32,6 +32,8 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.kill())
 
 -- Move and modify window
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Navigation
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -39,16 +41,22 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
-for i = 1, 10 do
-	local key = i % 10 -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
-end
+hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ workspace = "e+1" }))
+
+-- Submap managing workspaces
+hl.bind(mainMod .. " + N", hl.dsp.submap("move_window"))
+hl.define_submap("move_window", "reset", function()
+	local homeRowKeys = { "A", "R", "S", "T", "D", "H", "N", "E", "I", "O" }
+	for i, key in ipairs(homeRowKeys) do
+		hl.bind(key, hl.dsp.focus({ workspace = i }))
+		hl.bind("SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	end
+end)
 
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + B", hl.dsp.window.resize(), { mouse = true })
-
 -- Laptop stuff
 hl.bind(
 	"XF86AudioRaiseVolume",
