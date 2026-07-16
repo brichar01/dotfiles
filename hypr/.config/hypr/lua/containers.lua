@@ -37,27 +37,27 @@
 -- }
 
 hl.config({
-	general = {
-		gaps_in = 5,
-		gaps_out = 10,
-	},
-	decoration = {
-		rounding = 5,
-		rounding_power = 2,
-		shadow = {
-			enabled = true,
-			range = 20,
-			render_power = 3,
-			color = "rgba(2e3440ee)",
-		},
-		blur = {
-			enabled = true,
-			size = 5,
-			passes = 2,
-			vibrancy = 0.2,
-		},
-	},
-	animations = {
-		enabled = true,
-	},
+  general = {
+    gaps_in = 5,
+    gaps_out = 10,
+  },
+  decoration = {
+    rounding = 5,
+    rounding_power = 2,
+    shadow = {
+      enabled = true,
+      range = 20,
+      render_power = 3,
+      color = "rgba(2e3440ee)",
+    },
+    blur = {
+      enabled = true,
+      size = 5,
+      passes = 2,
+      vibrancy = 0.2,
+    },
+  },
+  animations = {
+    enabled = true,
+  },
 })

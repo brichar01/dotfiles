@@ -17,6 +17,7 @@ compinit
 export CONFIGDIR="$HOME/.config"
 export XDG_CONFIG_DIR="$CONFIGDIR"
 export STOW_DIR="$HOME/.dotfiles"
+export EDITOR="nvim"
 
 alias nvimc='zsh -c "cd $(echo $STOW_DIR) && nvim"'
 alias stowall='stow */'
