@@ -36,23 +36,27 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Navigation
+-- Focus switch
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ workspace = "e+1" }))
-
-hl.bind(mainMod .. " + CTRL + left", hl.dsp.window.move({ workspace = "r-1" }))
-hl.bind(mainMod .. " + CTRL + right", hl.dsp.window.move({ workspace = "r+1" }))
-
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + B", hl.dsp.window.resize(), { mouse = true })
-
+-- Focus next/last workspace
 hl.bind(mainMod .. " + SHIFT + up", hl.dsp.focus({ workspace = "r+1" }))
 hl.bind(mainMod .. " + SHIFT + down", hl.dsp.focus({ workspace = "r-1" }))
+
+-- Move to next/previous workspace on screen
+hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ workspace = "r+1" }))
+
+-- Move to next/previous visible workspace
+hl.bind(mainMod .. " + CTRL + left", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(mainMod .. " + CTRL + right", hl.dsp.window.move({ workspace = "e+1" }))
+
+-- Mouse version
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Laptop stuff
 hl.bind(

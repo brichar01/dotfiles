@@ -11,5 +11,5 @@ hl.monitor({
   position = "2560x0",
   scale = 1,
 })
--- hl.monitor({ output = "eDP-1", disabled = true })
+hl.monitor({ output = "eDP-1", disabled = true })
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
