@@ -1,15 +1,15 @@
 
 [miscellaneous]
 
-allowNotifications=1
+allowNotifications=0
 
 alwaysCrossfade=0
 
-repeatState=0
+repeatState=1
 
 shuffleEnabled=0
 
-lastVolume=100
+lastVolume=35
 
 [track cover]
 
@@ -17,7 +17,7 @@ coverAnsi=0
 
 [visualizer]
 
-visualizerColortype=2
+visualizerColortype=3
 
 [chroma]
 
@@ -29,5 +29,5 @@ colorMode=0
 
 theme=
 
-currentSongId=255
-currentSongSeconds=20.541883
+currentSongId=513
+currentSongSeconds=82.542559
