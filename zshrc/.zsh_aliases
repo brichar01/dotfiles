@@ -5,8 +5,13 @@ alias unstow='stow -D'
 
 
 ## pseudo aliases
-function cheat () {
-	curl -sS "cheat.sh/$1" | less -R
+cheat() {
+  local sheet="$HOME/.cheat/$1.txt"
+  if [[ -f $sheet ]]; then
+    awk -f "$HOME/.cheat/colourise.awk" "$sheet" | less -R
+  else
+    curl -sS cheat.sh/"$1" | less -R
+  fi
 }
 
 function n() {
