@@ -5,7 +5,7 @@ allowNotifications=0
 
 alwaysCrossfade=0
 
-repeatState=1
+repeatState=0
 
 shuffleEnabled=0
 
@@ -29,5 +29,5 @@ colorMode=0
 
 theme=
 
-currentSongId=513
-currentSongSeconds=82.542559
+currentSongId=1009
+currentSongSeconds=18.880126

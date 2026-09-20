@@ -31,6 +31,7 @@ flatpak
 fzf
 gdu
 git
+glow
 go
 google-chrome
 grim
@@ -58,6 +59,7 @@ man-pages
 minicom
 neovim
 networkmanager
+noto-fonts-emoji
 openssh
 pipewire
 pipewire-pulse

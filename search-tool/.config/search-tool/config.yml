@@ -1,0 +1,28 @@
+weights:
+  ck: 0.6
+  ck-lex: 0.6
+
+source:
+  directory: $HOME/src
+  tools: [rg, fzf, ck]
+  ignore: [.venv, node_modules, target, "*qmk*", zmk, corne]
+
+workbenches:
+  directory: $HOME/.cache/nvim/workbenches
+  tools: [ck, rg]
+
+notes:
+  directory: $HOME/personal
+  tools: [ck, rg, fzf]
+
+help:
+  directory: $HOME/.cache/search-tool/help
+  tools: [rg, ck]
+
+history:
+  directory: $HOME/.histfile
+  tools: [hist]
+
+tldr:
+  directory: $HOME/.local/share/tldr/pages
+  tools: [rg, ck]

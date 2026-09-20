@@ -2,13 +2,16 @@ alias restart_waybar="hyprctl eval \"hl.exec_cmd('waybar')\""
 alias nvimc='zsh -c "cd $(echo $STOW_DIR) && nvim"'
 alias stowall='stow */'
 alias unstow='stow -D'
-
+alias cph='fc -ln -1 | wl-copy'
+alias haiku="claude --model haiku -p"
+alias st="search-tool"
+alias sts="search-tool-semantic"
 
 ## pseudo aliases
 cheat() {
-  local sheet="$HOME/.cheat/$1.txt"
+  local sheet="$HOME/.cheat/$1.md"
   if [[ -f $sheet ]]; then
-    awk -f "$HOME/.cheat/colourise.awk" "$sheet" | less -R
+    glow -p "$sheet"
   else
     curl -sS cheat.sh/"$1" | less -R
   fi
@@ -43,6 +46,4 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
-function clde () {
-	claude -p $1 -c --output-format json | jq --color-output . | less -R 
-}
+# flash a UF2 based device
