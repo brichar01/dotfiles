@@ -5,6 +5,7 @@ alsa-utils
 atac
 base
 base-devel
+bash-completion
 bluetui
 bluez
 bluez-utils
