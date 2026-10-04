@@ -11,6 +11,7 @@ hl.monitor({
   position = "2560x0",
   scale = 1,
 })
+
 local function external_monitor_connected()
   local ls = io.popen("ls -d /sys/class/drm/card*-*/")
   if not ls then return false end
@@ -29,9 +30,7 @@ local function external_monitor_connected()
   return found
 end
 
-local function update_builtin()
-  hl.monitor({ output = "eDP-1", disabled = external_monitor_connected() })
-end
+local function update_builtin() hl.monitor({ output = "eDP-1", disabled = external_monitor_connected() }) end
 
 update_builtin()
 hl.on("monitor.added", update_builtin)

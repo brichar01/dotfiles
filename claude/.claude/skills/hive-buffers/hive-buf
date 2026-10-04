@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+# Read and write files through hive.nvim's buffer layer (hive.fs) in a running Neovim.
+#
+#   hive-buf read <path>            print the buffer's bytes, or the file's when no buffer holds it
+#   hive-buf write <path> < content  put content into the buffer, loading one if needed. Nothing reaches disk.
+#
+# The Neovim is $HIVE_NVIM, else $NVIM, else the one listening socket whose cwd contains <path>.
+set -euo pipefail
+
+here=$(dirname -- "$(realpath -- "${BASH_SOURCE[0]}")")
+
+usage() {
+  echo "usage: hive-buf read <path> | hive-buf write <path> < content" >&2
+  exit 2
+}
+
+[[ $# -eq 2 ]] || usage
+cmd=$1
+[[ $cmd == read || $cmd == write ]] || usage
+path=$(realpath -m -- "$2")
+
+# A Vimscript single-quoted string.
+quote() {
+  printf "'%s'" "${1//\'/\'\'}"
+}
+
+find_server() {
+  if [[ -n ${HIVE_NVIM:-} ]]; then
+    echo "$HIVE_NVIM"
+    return
+  fi
+  if [[ -n ${NVIM:-} ]]; then
+    echo "$NVIM"
+    return
+  fi
+
+  local sock cwd matches=()
+  for sock in "${XDG_RUNTIME_DIR:-/run/user/$UID}"/nvim.*.0; do
+    [[ -S $sock ]] || continue
+    cwd=$(timeout 2 nvim --server "$sock" --remote-expr 'getcwd()' 2>/dev/null) || continue
+    if [[ $path == "$cwd" || $path == "$cwd"/* ]]; then
+      matches+=("$sock")
+    fi
+  done
+
+  if [[ ${#matches[@]} -eq 1 ]]; then
+    echo "${matches[0]}"
+    return
+  fi
+  if [[ ${#matches[@]} -eq 0 ]]; then
+    echo "hive-buf: no running Neovim has a cwd containing $path. Set HIVE_NVIM to its socket." >&2
+  else
+    echo "hive-buf: several Neovims have a cwd containing $path. Set HIVE_NVIM to one of: ${matches[*]}" >&2
+  fi
+  exit 1
+}
+
+server=$(find_server)
+tmp=$(mktemp)
+trap 'rm -f -- "$tmp"' EXIT
+
+if [[ $cmd == write ]]; then
+  cat >"$tmp"
+  # Directories are real, as with Pi's write tool. Only file content stays in the buffer.
+  mkdir -p -- "$(dirname -- "$path")"
+fi
+
+expr="luaeval('dofile(_A[1])(_A[2], _A[3], _A[4])', [$(quote "$here/hive-buf.lua"), $(quote "$cmd"), $(quote "$path"), $(quote "$tmp")])"
+result=$(nvim --server "$server" --remote-expr "$expr")
+
+case $result in
+  ok)
+    if [[ $cmd == read ]]; then
+      cat -- "$tmp"
+    fi
+    ;;
+  disk)
+    cat -- "$path"
+    ;;
+  *)
+    echo "hive-buf: ${result#error: }" >&2
+    exit 1
+    ;;
+esac

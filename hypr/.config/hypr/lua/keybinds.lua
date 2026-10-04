@@ -25,7 +25,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("dolphin"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock --grace 20"))
 hl.bind(
-  mainMod .. " + M",
+  mainMod .. "+ SHIFT + F1",
   hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + Q", hl.dsp.window.kill())
