@@ -1,0 +1,19 @@
+[global]
+line-length = 100
+disable = ["MD001", "MD025", "MD031", "MD032", "MD033", "MD041", "MD058"]
+extend-enable = ["MD070", "MD088", "MD095"]
+
+[MD004] # list style
+style = "dash"
+
+[MD012]
+maximum = 1
+
+[MD022]
+lines-above = 1
+lines-below = 0
+
+[MD063]
+style = "sentence-case"
+ignore-words = ["AQ1", "hive"]
+

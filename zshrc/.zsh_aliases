@@ -46,4 +46,7 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
-# flash a UF2 based device
+
+
+alias pi='DEEPSEEK_API_KEY="$(secret-tool lookup service deepseek key api)" pi'
+
