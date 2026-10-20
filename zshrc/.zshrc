@@ -6,6 +6,14 @@ setopt autocd extendedglob nomatch notify
 unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
+
+# Home / End (kitty emits \e[H / \e[F; other terms use \eOH / \e[1~)
+bindkey '^[[H'  beginning-of-line
+bindkey '^[[F'  end-of-line
+bindkey '^[OH'  beginning-of-line
+bindkey '^[OF'  end-of-line
+bindkey '^[[1~' beginning-of-line
+bindkey '^[[4~' end-of-line
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/benri/.zshrc'
 
