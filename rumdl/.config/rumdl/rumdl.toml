@@ -3,6 +3,9 @@ line-length = 100
 disable = ["MD001", "MD025", "MD031", "MD032", "MD033", "MD041", "MD058"]
 extend-enable = ["MD070", "MD088", "MD095"]
 
+[MD013]
+reflow = true
+
 [MD004] # list style
 style = "dash"
 
